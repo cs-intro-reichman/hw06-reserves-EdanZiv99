@@ -19,7 +19,14 @@ public class Runigram {
 		Color[][] imageOut;
 
 		// Tests the horizontal flipping of an image:
-		imageOut = flippedHorizontally(read(fileName));
+		//imageOut = flippedHorizontally(read(fileName));
+		//System.out.println();
+		//print(read(fileName));
+		//System.out.println("the flipped image: ");
+		//print(imageOut);
+
+		// Tests the vertical flipping of an image:
+		imageOut = flippedVertically(read(fileName));
 		System.out.println();
 		print(read(fileName));
 		System.out.println("the flipped image: ");
@@ -122,7 +129,7 @@ public class Runigram {
 				newImage [newImage.length-1-i][j] = tempColor;
 			}
 		}
-		return null;
+		return newImage;
 	}
 	
 	// Computes the luminance of the RGB values of the given pixel, using the formula 
