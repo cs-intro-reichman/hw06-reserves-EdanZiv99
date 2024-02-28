@@ -95,9 +95,9 @@ public class Runigram {
 
 		for (int j = 0; j < newImage[0].length/2; j++) {
 			for (int i = 0; i < newImage.length; i++) {
-				Color temp = newImage[i][j]; 
+				Color tempColor = newImage[i][j]; 
 				newImage [i][j] = newImage [i][newImage.length-1-j]; 
-				newImage [i][newImage.length- 1-j] = temp;  
+				newImage [i][newImage.length- 1-j] = tempColor;  
 			}
 		}
 		return newImage;
@@ -107,7 +107,21 @@ public class Runigram {
 	 * Returns an image which is the vertically flipped version of the given image. 
 	 */
 	public static Color[][] flippedVertically(Color[][] image){
-		//// Replace the following statement with your code
+		Color [][] newImage = new Color[image.length][image[0].length]; 
+		
+		for (int i = 0; i < image.length; i++) {
+			for (int j = 0; j < image[0].length; j++) {
+				newImage[i][j] = image[i][j]; 
+			}
+		}
+
+		for (int i = 0; i < newImage.length/2; i++) {
+			for (int j = 0; j < newImage[0].length; j++) {
+				Color tempColor = newImage [i][j];
+				newImage[i][j] = newImage [newImage.length-1-i][j]; 
+				newImage [newImage.length-1-i][j] = tempColor;
+			}
+		}
 		return null;
 	}
 	
