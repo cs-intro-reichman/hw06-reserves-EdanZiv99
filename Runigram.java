@@ -9,8 +9,9 @@ public class Runigram {
 	    
 		//// Hide / change / add to the testing code below, as needed.
 		
-		// Tests the reading and printing of an image:	
-		Color[][] tinypic = read("tinypic.ppm");
+		// Tests the reading and printing of an image:
+		String fileName = args[0];
+		Color[][] tinypic = read(fileName);
 		print(tinypic);
 
 		// Creates an image which will be the result of various 
@@ -18,9 +19,9 @@ public class Runigram {
 		Color[][] imageOut;
 
 		// Tests the horizontal flipping of an image:
-		imageOut = flippedHorizontally(tinypic);
-		System.out.println();
-		print(imageOut);
+		//imageOut = flippedHorizontally(tinypic);
+		//System.out.println();
+		//print(imageOut);
 		
 		//// Write here whatever code you need in order to test your work.
 		//// You can reuse / overide the contents of the imageOut array.
@@ -36,13 +37,21 @@ public class Runigram {
 		int numRows = in.readInt();
 		in.readInt();
 		// Creates the image array
-		Color[][] image = new Color[numRows][numCols];
 		// Reads the RGB values from the file, into the image array. 
 		// For each pixel (i,j), reads 3 values from the file,
 		// creates from the 3 colors a new Color object, and 
 		// makes pixel (i,j) refer to that object.
 		//// Replace the following statement with your code.
-		return null;
+		Color[][] image = new Color[numRows][numCols];
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numCols; j++) {
+				int red = in.readInt();
+				int green = in.readInt();
+				int blue = in.readInt();
+				image [i][j] = new Color(red, green, blue); 
+			}
+		}
+		return image;
 	}
 
     // Prints the RGB values of a given color.
@@ -60,7 +69,14 @@ public class Runigram {
 	// For example, to check that some image processing function works correctly,
 	// we can apply the function and then use this function to print the resulting image.
 	private static void print(Color[][] image) {
-		//// Replace this comment with your code
+		int numRows = image.length; 
+		int numCols = image[0].length; 
+
+		for (int i = 0; i < numRows; i++) {
+				for (int j = 0; j < numCols; j++) {
+					System.out.println(image[i][j]);
+				}
+			}
 	}
 	
 	/**
