@@ -11,17 +11,19 @@ public class Runigram {
 		
 		// Tests the reading and printing of an image:
 		String fileName = args[0];
-		Color[][] tinypic = read(fileName);
-		print(tinypic);
+		//Color[][] tinypic = read(fileName);
+		//print(tinypic);
 
 		// Creates an image which will be the result of various 
 		// image processing operations:
 		Color[][] imageOut;
 
 		// Tests the horizontal flipping of an image:
-		//imageOut = flippedHorizontally(tinypic);
-		//System.out.println();
-		//print(imageOut);
+		imageOut = flippedHorizontally(read(fileName));
+		System.out.println();
+		print(read(fileName));
+		System.out.println("the flipped image: ");
+		print(imageOut);
 		
 		//// Write here whatever code you need in order to test your work.
 		//// You can reuse / overide the contents of the imageOut array.
@@ -74,7 +76,7 @@ public class Runigram {
 
 		for (int i = 0; i < numRows; i++) {
 				for (int j = 0; j < numCols; j++) {
-					System.out.println(image[i][j]);
+					print(image[i][j]);
 				}
 			}
 	}
@@ -83,8 +85,22 @@ public class Runigram {
 	 * Returns an image which is the horizontally flipped version of the given image. 
 	 */
 	public static Color[][] flippedHorizontally(Color[][] image) {
-		//// Replace the following statement with your code
-		return null;
+		Color [][] newImage = new Color[image.length][image[0].length]; 
+		
+		for (int i = 0; i < image.length; i++) {
+			for (int j = 0; j < image[0].length; j++) {
+				newImage[i][j] = image[i][j]; 
+			}
+		}
+
+		for (int j = 0; j < newImage[0].length/2; j++) {
+			for (int i = 0; i < newImage.length; i++) {
+				Color temp = newImage[i][j]; 
+				newImage [i][j] = newImage [i][newImage.length-1-j]; 
+				newImage [i][newImage.length- 1-j] = temp;  
+			}
+		}
+		return newImage;
 	}
 	
 	/**
