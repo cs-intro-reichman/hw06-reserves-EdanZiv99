@@ -222,18 +222,15 @@ public class Runigram {
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) {
 		Color[][] newImage = new Color[source.length][source[0].length];
-		Color[][] newTarget; 
 		if (source.length != target.length || source[0].length != target[0].length) {
-			newTarget = scaled(target, source.length, source[0].length);
-		} else {
-			newTarget = new Color[target.length][target[0].length];
-		}
+			target = scaled(target, source[0].length, source.length);
+		} 
 
 		for (int m = 0; m < n; m++) {
 			double alpha = (double)((n-m)/n); 
 			for (int i = 0; i < newImage.length; i++) {
 				for (int j = 0; j < newImage[0].length; j++) {
-					newImage[i][j] = blend(newTarget[i][j], source[i][j], alpha); 
+					newImage[i][j] = blend(target[i][j], source[i][j], alpha); 
 				} 
 			}
 			display(newImage);
