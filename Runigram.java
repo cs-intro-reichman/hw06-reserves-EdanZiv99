@@ -183,8 +183,18 @@ public class Runigram {
 	 * values in the two input color.
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
-		//// Replace the following statement with your code
-		return null;
+		int c1Red = c1.getRed();
+		int c1Green = c1.getGreen();
+		int c1Blue =  c1.getBlue();
+		int c2Red = c2.getRed();
+		int c2Green = c2.getGreen();
+		int c2Blue =  c2.getBlue();
+		int blendRed = (int) (alpha * c1Red + (1-alpha) * c2Red);
+		int blendGreen = (int) (alpha * c1Green + (1-alpha) * c2Green);
+		int blendBlue = (int) (alpha * c1Blue + (1-alpha) * c2Blue);
+		Color blendColor = new Color(blendRed, blendGreen, blendBlue);
+
+		return blendColor;
 	}
 	
 	/**
@@ -194,8 +204,14 @@ public class Runigram {
 	 * The two images must have the same dimensions.
 	 */
 	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
-		//// Replace the following statement with your code
-		return null;
+		Color [][] newImage = new Color[image1.length][image1[0].length];
+		
+		for (int i = 0; i < image1.length; i++) {
+			for (int j = 0; j < image1[0].length; j++) {
+				newImage[i][j] = blend(image1[i][j], image2[i][j], alpha);
+			}
+		}
+		return newImage; 
 	}
 
 	/**
@@ -205,8 +221,26 @@ public class Runigram {
 	 * of the source image.
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) {
-		//// Replace this comment with your code
-	}
+		Color[][] newImage = new Color[source.length][source[0].length];
+		Color[][] newTarget; 
+		if (source.length != target.length || source[0].length != target[0].length) {
+			newTarget = scaled(target, source.length, source[0].length);
+		} else {
+			newTarget = new Color[target.length][target[0].length];
+		}
+
+		for (int m = 0; m < n; m++) {
+			double alpha = (double)((n-m)/n); 
+			for (int i = 0; i < newImage.length; i++) {
+				for (int j = 0; j < newImage[0].length; j++) {
+					newImage[i][j] = blend(newTarget[i][j], source[i][j], alpha); 
+				} 
+			}
+			display(newImage);
+			StdDraw.pause(500);
+		}
+	}	
+	
 	
 	/** Creates a canvas for the given image. */
 	public static void setCanvas(Color[][] image) {

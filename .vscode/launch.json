@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Runigram",
+            "request": "launch",
+            "mainClass": "Runigram",
+            "projectName": "hw06-reserves-EdanZiv99_f7f85923"
+        },
+        {
+            "type": "java",
+            "name": "Editor3",
+            "request": "launch",
+            "mainClass": "Editor3",
+            "projectName": "hw06-reserves-EdanZiv99_f7f85923"
+        },
+        {
+            "type": "java",
+            "name": "Editor2",
+            "request": "launch",
+            "mainClass": "Editor2",
+            "projectName": "hw06-reserves-EdanZiv99_f7f85923"
+        },
+        "args"
+    ]
+}
