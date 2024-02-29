@@ -103,8 +103,8 @@ public class Runigram {
 		for (int j = 0; j < newImage[0].length/2; j++) {
 			for (int i = 0; i < newImage.length; i++) {
 				Color tempColor = newImage[i][j]; 
-				newImage [i][j] = newImage [i][newImage.length-1-j]; 
-				newImage [i][newImage.length- 1-j] = tempColor;  
+				newImage [i][j] = newImage [i][newImage[0].length-1-j]; 
+				newImage [i][newImage[0].length- 1-j] = tempColor;  
 			}
 		}
 		return newImage;
@@ -166,8 +166,14 @@ public class Runigram {
 	 * The image is scaled (resized) to have the given width and height.
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
-		//// Replace the following statement with your code
-		return null;
+		Color [][] newImage = new Color[height][width]; 
+		
+		for (int i = 0; i < newImage.length; i++) {
+			for (int j = 0; j < newImage[0].length; j++) {
+				newImage[i][j] = image[i * image.length / height][j * image[0].length / width]; 
+			}
+		} 
+		return newImage;
 	}
 	
 	/**
